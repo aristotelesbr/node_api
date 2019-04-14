@@ -1,9 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 
-// import mongoose
+// Conexão com o banco
 mongoose.connect('mongodb+srv://ari:ari@cluster0-2kafy.mongodb.net/dropbox_development?retryWrites=true',
   {
     useNewUrlParser: true,
@@ -12,6 +13,7 @@ mongoose.connect('mongodb+srv://ari:ari@cluster0-2kafy.mongodb.net/dropbox_devel
 app.use(express.json());
 // Permite o upload de arquivos
 app.use(express.urlencoded({ extended: true }));
+app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp')));
 // Importando o arquivo de routes
 app.use(require('./routes'));
 
