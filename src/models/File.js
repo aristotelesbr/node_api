@@ -7,10 +7,10 @@ const File = new mongoose.Schema({
   },
   path: {
     type: String,
-    required: true
+    required: true,
   },
 }, {
-  timestamps: true
+  timestamps: true,
 });
 
 module.exports = mongoose.model('File', File);
